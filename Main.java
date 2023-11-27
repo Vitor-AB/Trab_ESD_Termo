@@ -23,16 +23,24 @@ public class Main {
 
     static void getPosicaoErrada(String c, String g){
         String c1 = c.substring(0,2);
-        String c2 = c.substring(2,5);
+        String c2 = c.substring(2,3);
+        String c3 = c.substring(3,5);
         String g1 = g.substring(0,2);
-        String g2 = g.substring(2,5);
+        String g2 = g.substring(2,3);
+        String g3 = g.substring(3,5);
 
         for (int i = 0; i < c1.length(); i++) {
             if(c1.indexOf(g1.charAt(i)) != -1 && c1.indexOf(g1.charAt(i)) != g1.indexOf(c1.charAt(i))){
                 posicaoErrada.put(i,Character.toString(g1.charAt(i)));
             }
-            if(c2.indexOf(g2.charAt(i)) != -1 && c2.indexOf(g2.charAt(i)) != g2.indexOf(c2.charAt(i))){
-                posicaoErrada.put(i+2,Character.toString(g2.charAt(i)));
+        }
+        if (c2.indexOf(g2.charAt(0)) != -1 && c2.indexOf(g2.charAt(0)) != g2.indexOf(c2.charAt(0))){
+            posicaoErrada.put(2,Character.toString(g2.charAt(0)));
+        }
+
+        for (int i = 0; i < c3.length(); i++) {
+            if(c3.indexOf(g3.charAt(i)) != -1 && c3.indexOf(g3.charAt(i)) != g3.indexOf(c3.charAt(i))){
+                posicaoErrada.put(i+3,Character.toString(g3.charAt(i)));
             }
         }
 
@@ -102,7 +110,7 @@ public class Main {
         if(sus){
             System.out.println("Acertou! \nPalavra: " + chosenWord + " // " + palavras);
         }else {
-            System.out.println("Falhou!");
+            System.out.println("Falhou! \nChute:" + guess);
         }
 
 
