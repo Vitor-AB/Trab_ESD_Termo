@@ -22,11 +22,25 @@ public class Main {
     }
 
     static void getPosicaoErrada(String c, String g){
-        for (int i = 0; i < c.length(); i++) {
-            if(c.indexOf(g.charAt(i)) != -1 && c.indexOf(g.charAt(i)) != g.indexOf(c.charAt(i))){
-               posicaoErrada.put(i,Character.toString(g.charAt(i)));
+        String c1 = c.substring(0,2);
+        String c2 = c.substring(2,5);
+        String g1 = g.substring(0,2);
+        String g2 = g.substring(2,5);
+
+        for (int i = 0; i < c1.length(); i++) {
+            if(c1.indexOf(g1.charAt(i)) != -1 && c1.indexOf(g1.charAt(i)) != g1.indexOf(c1.charAt(i))){
+                posicaoErrada.put(i,Character.toString(g1.charAt(i)));
+            }
+            if(c2.indexOf(g2.charAt(i)) != -1 && c2.indexOf(g2.charAt(i)) != g2.indexOf(c2.charAt(i))){
+                posicaoErrada.put(i+2,Character.toString(g2.charAt(i)));
             }
         }
+
+//        for (int i = 0; i < c.length(); i++) {
+//            if(c.indexOf(g.charAt(i)) != -1 && c.indexOf(g.charAt(i)) != g.indexOf(c.charAt(i))){
+//               posicaoErrada.put(i,Character.toString(g.charAt(i)));
+//            }
+//        }
     }
 
     static void getPosicaoCerta(String c,String g){
@@ -40,6 +54,7 @@ public class Main {
     static void filterPalavras(){
         ArrayList<String> removidas = new ArrayList<>();
         String removida = "";
+
         for (String i: palavras) {
             for (int j = 0; j < i.length(); j++) {
                 if(letrasNaoExistem.contains(Character.toString(i.charAt(j)))){
@@ -85,8 +100,7 @@ public class Main {
             guess = chooseWord();
         }
         if(sus){
-            System.out.println("Chute:" + guess);
-            System.out.println("Acertou! \nPalavra: " + chosenWord);
+            System.out.println("Acertou! \nPalavra: " + chosenWord + " // " + palavras);
         }else {
             System.out.println("Falhou!");
         }
